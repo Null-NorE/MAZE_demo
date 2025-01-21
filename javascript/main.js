@@ -64,11 +64,13 @@ const move = (() => {
          nowposition = nextposition;
 
          // 等待浏览器渲染完成再弹窗
-         setTimeout(() => {
-            if (isSameArray(nowposition, END)) {
-               alert("按F5刷新页面可重新生成迷宫");
-            }
-         }, 1);
+         requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+               if (isSameArray(nowposition, END)) {
+                  alert("按F5刷新页面可重新生成迷宫");
+               }
+            });
+         });
       }
    }
 })()
